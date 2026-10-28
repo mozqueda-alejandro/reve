@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
-  <AddIn Type="Command">
+  <AddIn Type="Application">
     <Name>Reve</Name>
-    <FullClassName>Reve.Addin.Class1</FullClassName>
-    <Text>Reve</Text>
-    <Description>Places the Group at Particular Point</Description>
-    <VisibilityMode>AlwaysVisible</VisibilityMode>
-    <Assembly>C:\Users\admoz\data\dev\Reve\src\Reve.Addin\bin\Debug\net10.0\Reve.Addin.dll</Assembly>
-    <AddInId>d5970d21-a026-4813-8ec3-ad05d86c9855</AddInId>
-    <VendorId>ADSK</VendorId>
-    <VendorDescription>Autodesk, Inc, www.autodesk.com</VendorDescription>
+    <Assembly>Reve\Reve.Addin.dll</Assembly>
+    <FullClassName>Reve.Addin.ReveApplication</FullClassName>
+    <AddInId>3f1c7a52-8d4e-4b6a-9c15-2e7b0a94d6f3</AddInId>
+    <VendorId>REVE</VendorId>
+    <VendorDescription>Reve</VendorDescription>
   </AddIn>
 </RevitAddIns>

@@ -1,27 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net10.0-windows</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <PropertyGroup>
+        <UseWPF>true</UseWPF>
         <RevitYear>2026</RevitYear>
+        <RevitAddinsFolder>$(APPDATA)\Autodesk\Revit\Addins\$(RevitYear)</RevitAddinsFolder>
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="RevitAPI">
-        <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2026\RevitAPI.dll</HintPath>
-      </Reference>
-      <Reference Include="RevitAPIUI">
-        <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2026\RevitAPIUI.dll</HintPath>
-      </Reference>
+        <ProjectReference Include="..\Reve.Core\Reve.Core.csproj" />
+        <ProjectReference Include="..\Reve.RevitServices\Reve.RevitServices.csproj" />
+        <ProjectReference Include="..\Reve.UI\Reve.UI.csproj" />
     </ItemGroup>
 
-    <Target Name="CopyAddinManifest" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+        <Reference Include="RevitAPI">
+            <HintPath>C:\Program Files\Autodesk\Revit 2026\RevitAPI.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="RevitAPIUI">
+            <HintPath>C:\Program Files\Autodesk\Revit 2026\RevitAPIUI.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <Target Name="DeployToRevitAddinsFolder" AfterTargets="Build">
+        <ItemGroup>
+            <ReveOutputDlls Include="$(OutDir)Reve.*.dll" />
+        </ItemGroup>
+        <Copy SourceFiles="@(ReveOutputDlls)"
+              DestinationFolder="$(RevitAddinsFolder)\Reve"
+              SkipUnchangedFiles="true" />
         <Copy SourceFiles="Reve.addin"
-              DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\$(RevitYear)"
+              DestinationFolder="$(RevitAddinsFolder)"
               SkipUnchangedFiles="true" />
     </Target>
 
