@@ -6,20 +6,18 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Reference Include="RevitAPI">
-        <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2026\RevitAPI.dll</HintPath>
-        <Private>False</Private>
-      </Reference>
-      <Reference Include="RevitAPIUI">
-        <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2026\RevitAPIUI.dll</HintPath>
-        <Private>False</Private>
-      </Reference>
-    </ItemGroup>
-
     <PropertyGroup>
         <RevitYear>2026</RevitYear>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="RevitAPI">
+        <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2026\RevitAPI.dll</HintPath>
+      </Reference>
+      <Reference Include="RevitAPIUI">
+        <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2026\RevitAPIUI.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 
     <Target Name="CopyAddinManifest" BeforeTargets="BeforeBuild">
         <Copy SourceFiles="Reve.addin"
